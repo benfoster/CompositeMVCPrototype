@@ -1,0 +1,18 @@
+﻿@model IEnumerable<CompositeMVC.Models.SimpleWidgetDefinition>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+</p>
+
+@foreach (var widget in Model) { 
+    <div class="widget">
+        <h2>@widget.Name</h2>
+        @Html.Action(widget.Action, widget.Controller, widget.RouteValues)
+    </div>
+}
+
+<div class="clear"></div>

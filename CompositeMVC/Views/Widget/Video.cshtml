@@ -1,0 +1,30 @@
+﻿@model CompositeMVC.Application.Widgets.VideoWidget
+
+<a href="@Model.Settings["url"]" class="embed">View Video</a>
+<div id="video"></div>
+<h3>@Model.Settings["title"]</h3>
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('a.embed').each(function () {
+            var $link = $(this);
+            var width = $link.parent().width();
+            var videoUrl = 'http://vimeo.com/api/oembed.json?url=' + $(this).attr('href') + '&width=' + width + "&callback=embedVideo";
+
+            var script = document.createElement("script");
+            script.type = 'text/javascript';
+            script.src = videoUrl;
+            $('head').append(script);
+        });
+
+    });
+
+    function embedVideo(data) {
+        $('.embed').hide();
+        $("#video").html(data.html);
+    }
+
+</script>

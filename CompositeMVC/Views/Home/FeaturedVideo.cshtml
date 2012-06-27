@@ -1,0 +1,24 @@
+﻿@model CompositeMVC.Models.Video
+
+<a href="@Model.Url" class="embed">View Video</a>
+
+<h3>@Model.Title</h3>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('a.embed').each(function () {
+            var $link = $(this);
+            var width = $link.parent().width();
+            var videoUrl = 'http://vimeo.com/api/oembed.json?width=' + width + '&url=' + $(this).attr('href');
+
+            $.getJSON(videoUrl, function (data) {
+                var container = $('<div></div>').html(data.html);
+                $link.after(container).hide();
+            });
+        });
+
+    });
+
+</script>

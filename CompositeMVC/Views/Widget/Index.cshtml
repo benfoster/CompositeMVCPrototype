@@ -1,0 +1,12 @@
+﻿@using CompositeMVC.Application
+@model PageModel
+
+@foreach (var widget in Model.Widgets) {
+        
+    <div class="widget">
+        <h2>@widget.Title</h2>
+        @widget.Render(Html)
+    </div>
+}
+
+<div class="clear"></div>

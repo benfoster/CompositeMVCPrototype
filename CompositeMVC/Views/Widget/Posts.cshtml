@@ -1,0 +1,12 @@
+﻿@model CompositeMVC.Application.Widgets.PostsWidget
+
+<ul>
+@foreach (var post in Model.Posts) { 
+    <li>
+        <h3><a href="#">@post.Title</a></h3>
+        <p>
+            @post.Summary
+        </p>
+    </li>
+}
+</ul>
